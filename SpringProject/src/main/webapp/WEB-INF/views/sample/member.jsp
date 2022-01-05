@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-sample.index.jsp
-${cccc}
+sample.member.jsp
+${id}
+${pw}
+${name}
 </body>
 </html>

@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-sample.index.jsp
-${cccc}
+sample.memberDTO.jsp
+$request.setCharacterEncoding("UTF-8");
+${id}
+${pw}
+${name}
 </body>
 </html>

@@ -33,7 +33,7 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
+		//날짜를 포멧하여 형식을 바꿔줬다 2022년 1월 5일(수) 오전 9시 49분 33초
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
