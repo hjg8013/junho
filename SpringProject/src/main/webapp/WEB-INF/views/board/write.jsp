@@ -26,7 +26,7 @@
 			<div class="col-sm-12 mb-3 mb-sm-0">
 				<textarea rows="10" name="content" cols="20" class="form-control form-control-user" id="exampleFirstName" placeholder="content"></textarea>
 			</div>
-			<div class="btn btn-primary btn-icon-split">>
+			<div class="btn btn-primary btn-icon-split">
 		        <input type="submit" value="글쓰기" class="btn btn-primary btn-icon-split">
 		    </div>
 	    </div>

@@ -7,5 +7,10 @@
   			insert into board(title,content,writer,regdate)
 			values(#{title},#{content},#{writer},now());
   		</insert>
-  
+  		<select id="tables" resultType="org.jun.domain.BoardDTO">
+  			select * from board;
+  		</select>
+  		<select id="datail" resultType="org.jun.domain.BoardDTO">
+  			select * from board where bno=#{bno};
+  		</select>
   </mapper>
