@@ -16,7 +16,7 @@
 </head>
 <body>
 	<h1>게시판 글쓰기</h1>
-	<form action="/board/write" method="post">
+	<form action="write" method="post">
 		<div class="form-group row">
 	    	<div class="col-sm-12 mb-3 mb-sm-0">
 	        	<input type="text" name="title" class="form-control form-control-user" id="exampleFirstName" placeholder="title">
