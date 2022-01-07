@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet">
-<link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="../resources/css/sb-admin-2.css" rel="stylesheet">
 <link href="../resources/css/all.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/write.css" rel="stylrsheet" type="text/css" >
 
@@ -21,6 +21,10 @@
 		<div class="col-sm-12 mb-3 mb-sm-0">
 			${datail.content}
 		</div>
+			<div class="col-sm-12 mb-3 mb-sm-0">
+		        <a href="modify?bno=${datail.bno}">수정</a>
+		        <a href="remove?bno=${datail.bno}">삭제</a>
+		    </div>
     </div>
 </body>
 </html>

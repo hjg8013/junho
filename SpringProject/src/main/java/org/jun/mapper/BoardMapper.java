@@ -9,4 +9,6 @@ public interface BoardMapper{
 	public void write(BoardDTO board);
 	public ArrayList<BoardDTO> tables();
 	public BoardDTO datail(BoardDTO board);
+	public void modify(BoardDTO board);
+	public void remove(BoardDTO board);
 }

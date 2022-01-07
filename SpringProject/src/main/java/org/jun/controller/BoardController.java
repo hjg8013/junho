@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("board")
@@ -44,6 +45,31 @@ public class BoardController {
 		
 		model.addAttribute("datail",service.datail(board));
 	}
+	//글수정 화면으로
+	@GetMapping("modify")
+	public void modify(BoardDTO board,Model model) {
+		System.out.println("modify");
+		model.addAttribute("datail",service.datail(board));
+	}
+	
+	//글수정 버튼을 클릭하면
+	@PostMapping("modify")
+	public String modifyPost(BoardDTO board,RedirectAttributes rttr) {
+		System.out.println("postmodify");
+		service.modify(board);
+		rttr.addAttribute("bno", board.getBno());
+		//controller에서 bno값이 필요해서 추가했다 bno에 넣어줘라 get으로 불러온값을
+		return "redirect:/board/datail";
+	}
+	//글삭제 버튼을 클릭하면
+	@GetMapping("remove")
+	public String remove(BoardDTO board) {
+		System.out.println(board);
+		service.remove(board);
+		
+		return "redirect:/board/tables";
+	}
+	
 	
 	
 }
