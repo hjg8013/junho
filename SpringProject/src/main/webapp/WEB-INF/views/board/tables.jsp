@@ -65,6 +65,13 @@
 			            <input type="text" name ="keyword">
 			            <input type="submit" value="검색">
 		         </div>
+		         <div>
+		         	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+		         		<ul>
+		         			<li>${num}</li>
+		         		</ul>
+		         	</c:forEach>
+		         </div>
 	        </form>
 	    </div>
 	</div>

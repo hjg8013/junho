@@ -35,8 +35,8 @@
 			      
 			    </otherwise>
 			  </choose>
+			  ﻿<!-- limit #{pageNum},#{amount} -->
 			  <![CDATA[and rownum >(#{pageNum}-1)*#{amount} and rownum<=#{pageNum}*#{amount}]]>
-			 
   		</select>
   		<select id="datail" resultType="org.jun.domain.BoardDTO">
   			select * from board where bno=#{bno};

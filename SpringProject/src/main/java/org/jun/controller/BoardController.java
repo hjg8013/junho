@@ -2,6 +2,7 @@ package org.jun.controller;
 
 import org.jun.domain.BoardDTO;
 import org.jun.domain.Criteria;
+import org.jun.domain.PageDTO;
 import org.jun.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,8 @@ public class BoardController {
 	public void tables(Criteria cri,Model model) {
 		System.out.println("tables"+service.tables(cri));
 		model.addAttribute("tables",service.tables(cri));
+		//이런식으로 바로 위에 등록하지 않고 바로사용할수있다 나중에 30도 받아와서 작업을 할수있게 만들거다
+		model.addAttribute("pageMaker", new PageDTO(cri,65));
 	}
 	//게시판 목록 리스트에서 제목으 클릭하면
 	@GetMapping("datail")
