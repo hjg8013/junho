@@ -53,6 +53,19 @@
 	            </c:forEach>
 	            </tbody>
 	        </table>
+	        <form action="tables" method="get">
+		        <div class="form-control bg-Light border-0 small">
+			            <select name="search">
+			            	<option value="T">제목</option>
+			            	<option value="C">내용</option>
+			            	<option value="W">작성자</option>
+			            	<option value="TC">제목 + 내용</option>
+			            	<option value="TCW">제목 + 내용 + 작성자</option>
+			            </select>
+			            <input type="text" name ="keyword">
+			            <input type="submit" value="검색">
+		         </div>
+	        </form>
 	    </div>
 	</div>
 </body>

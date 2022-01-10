@@ -1,6 +1,7 @@
 package org.jun.controller;
 
 import org.jun.domain.BoardDTO;
+import org.jun.domain.Criteria;
 import org.jun.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,9 +35,9 @@ public class BoardController {
 	}
 	//게시판 목록 리스트
 	@GetMapping("tables")
-	public void tables(Model model) {
-		System.out.println("tables"+service.tables());
-		model.addAttribute("tables",service.tables());
+	public void tables(Criteria cri,Model model) {
+		System.out.println("tables"+service.tables(cri));
+		model.addAttribute("tables",service.tables(cri));
 	}
 	//게시판 목록 리스트에서 제목으 클릭하면
 	@GetMapping("datail")

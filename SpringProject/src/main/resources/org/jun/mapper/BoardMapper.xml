@@ -8,7 +8,33 @@
 			values(#{title},#{content},#{writer},now());
   		</insert>
   		<select id="tables" resultType="org.jun.domain.BoardDTO">
-  			select * from board;
+  			select * from board
+  			  <choose>
+  			  <when test="search == null">
+			      
+			    </when>
+			    <when test="search == 'T'.toString()">
+			      where title like concat('%',#{keyword},'%')
+			    </when>
+			    <when test="search == 'C'.toString()">
+			      where content like concat('%',#{keyword},'%')
+			    </when>
+			    <when test="search == 'W'.toString()">
+			      where writer like concat('%',#{keyword},'%')
+			    </when>
+			     <when test="search == 'TC'.toString()">
+			      where title like concat('%',#{keyword},'%') or
+			      		content like concat('%',#{keyword},'%')
+			    </when>
+			     <when test="search == 'TCW'.toString()">
+			      where title like concat('%',#{keyword},'%') or
+			      		content like concat('%',#{keyword},'%') or
+			      		writer like concat('%',#{keyword},'%')
+			    </when>
+			    <otherwise>
+			      
+			    </otherwise>
+			  </choose>
   		</select>
   		<select id="datail" resultType="org.jun.domain.BoardDTO">
   			select * from board where bno=#{bno};
@@ -19,6 +45,11 @@
   				content=#{content},
   				regdate=now()
   				where bno=#{bno};
+  		</update>
+  		<update id="cntupdate">
+  			update board
+				set cnt = cnt + 1
+				where bno = #{bno}; 
   		</update>
   		<delete id="remove">
   			delete from board where bno=#{bno};
