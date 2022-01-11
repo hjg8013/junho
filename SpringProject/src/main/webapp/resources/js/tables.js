@@ -25,5 +25,11 @@ $(document).ready(function(){
 		 * */
 		actionForm.submit();
 		
-	})
+	});
+	$("input[type='submit']").on("click",function(e){
+		e.preventDefault(); //구현하는거에는 필요가없고 테스트하는용도로 적어뒀다
+		//peageNum의 값을 1로 실행
+		actionForm.find("input[name='pageNum']").val("1")
+		actionForm.submit();
+	});
 })

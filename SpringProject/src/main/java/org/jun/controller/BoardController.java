@@ -40,7 +40,7 @@ public class BoardController {
 		System.out.println("tables"+service.tables(cri));
 		model.addAttribute("tables",service.tables(cri));
 		//이런식으로 바로 위에 등록하지 않고 바로사용할수있다 나중에 60도 받아와서 작업을 할수있게 만들거다
-		int total=service.getTotalCount();
+		int total=service.getTotalCount(cri);
 		System.out.println("total"+total);
 		//total을 가져와서 사용
 		model.addAttribute("pageMaker", new PageDTO(cri,total));

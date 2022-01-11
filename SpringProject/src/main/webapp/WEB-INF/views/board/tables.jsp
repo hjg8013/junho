@@ -66,7 +66,7 @@
 			            	<option value="TC">제목 + 내용</option>
 			            	<option value="TCW">제목 + 내용 + 작성자</option>
 			            </select>
-			            <input type="text" name ="keyword">
+			            <input type="text" name ="keyword" value="${pageMaker.cri.keyword}">
 			            <input type="submit" value="검색">
 		         </div>
 		         <div id="dataTable_paginate" class="dataTables_paginate paging_simple_numbers">
