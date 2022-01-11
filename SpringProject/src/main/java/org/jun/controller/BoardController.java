@@ -39,8 +39,11 @@ public class BoardController {
 	public void tables(Criteria cri,Model model) {
 		System.out.println("tables"+service.tables(cri));
 		model.addAttribute("tables",service.tables(cri));
-		//이런식으로 바로 위에 등록하지 않고 바로사용할수있다 나중에 30도 받아와서 작업을 할수있게 만들거다
-		model.addAttribute("pageMaker", new PageDTO(cri,65));
+		//이런식으로 바로 위에 등록하지 않고 바로사용할수있다 나중에 60도 받아와서 작업을 할수있게 만들거다
+		int total=service.getTotalCount();
+		System.out.println("total"+total);
+		//total을 가져와서 사용
+		model.addAttribute("pageMaker", new PageDTO(cri,total));
 	}
 	//게시판 목록 리스트에서 제목으 클릭하면
 	@GetMapping("datail")

@@ -26,25 +26,45 @@ public class PageDTO {
 	
 	
 	
-	public PageDTO(Criteria cri, int total){
-		this.cri=cri;
-		this.total=total;
-		//(int)(Math.ceil(현재페이지번호/10.0))*10 계산된 결과를 endPage에 저장
-		this.endPage = (int)(Math.ceil(cri.getPageNum()/10))*10;
-		
-		this.startPage=this.endPage-9;
-		//전체건수를 고려한 endPage->realEnd
-		
-		//(int)(Math.ceil((전체건수*1.0)/10));
-		int realEnd=(int)(Math.ceil((total*10)/cri.getAmount()));
-		// realEnd < endPage  => realEnd값을
-		if(realEnd<endPage) {
-			this.endPage=realEnd;
-		}
-		this.prev=this.startPage > 1;
-		this.next=this.endPage<realEnd;
-	}
-	
+//	public PageDTO(Criteria cri, int total){
+//		this.cri=cri;
+//		this.total=total;
+//		//(int)(Math.ceil(현재페이지번호/10.0))*10 계산된 결과를 endPage에 저장
+//		this.endPage = (int)(Math.ceil(cri.getPageNum()/10.0))*10;
+//		
+//		this.startPage=endPage-9;
+//		//전체건수를 고려한 endPage->realEnd
+//		
+//		//(int)(Math.ceil((전체건수*1.0)/10));
+//		int realEnd=(int)(Math.ceil((total*10)/cri.getAmount()));
+//		// realEnd < endPage  => realEnd값을
+//		if(realEnd<endPage) {
+//			this.endPage=realEnd;
+//		}
+//		this.prev=this.startPage > 1;
+//		this.next=this.endPage<realEnd;
+//	}
+	   public PageDTO(Criteria cri, int total){
+		      this.cri=cri;
+		      this.total=total;
+		      
+		      // (int)(Math.ceil)(현재 페이지번호/10.0))*10;
+		      this.endPage=(int)(Math.ceil(cri.getPageNum()/10.0))*10;
+		      
+		      // 10-9=1, 20-9=11
+		      this.startPage = endPage-9;
+		      
+		      // 전체 건수를 고려한 endPage -> realEnd
+		      int realEnd=(int)(Math.ceil((total*10)/cri.getAmount()));
+		      
+		      // realEnd > endpage => realEnd값을 endPage에 저장
+		      if(realEnd<endPage) {
+		         this.endPage=realEnd;
+		      }
+		      this.prev = this.startPage > 1.0;
+		      this.next = this.endPage < realEnd;
+		   }
+
 	
 	
 	public int getStartPage() {
