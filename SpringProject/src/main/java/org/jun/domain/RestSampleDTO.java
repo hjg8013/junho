@@ -4,8 +4,13 @@ public class RestSampleDTO {
 	int mno;
 	String firstName;
 	String lastName;
-
-
+	
+	public RestSampleDTO(){}
+	public RestSampleDTO(int mno) {
+		this.mno=mno;
+		this.firstName ="황";
+		this.lastName= "준호";
+	}
 	public RestSampleDTO(int mno, String firstName,String lastName) {
 		this.mno=mno;
 		this.firstName=firstName;

@@ -7,10 +7,16 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet">
-<link href="../resources/css/sb-admin-2.css" rel="stylesheet">
+<link href="../resources/css/sb-admin-2.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/all.css" rel="stylesheet" type="text/css">
-<link href="../resources/css/write.css" rel="stylrsheet" type="text/css" >
-
+<link href="../resources/css/bootstrap.css" rel="stylesheet" type="text/css" >
+<link href="../resources/css/metisMenu.css" rel="stylesheet" type="text/css" >
+<link href="../resources/css/font-awesome.css" rel="stylesheet" type="text/css" >
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../resources/js/bootstrap.js" type="text/javascript"></script>
+<script src="../resources/js/metisMenu.js" type="text/javascript"></script>
+<script src="../resources/js/sb-admin-2.js" type="text/javascript"></script>
+<!--<script src="../resources/js/detail.js" type="text/javascript"></script>  -->
 </head>
 <body>
 	<div class="form-group row">
@@ -21,10 +27,47 @@
 		<div class="col-sm-12 mb-3 mb-sm-0">
 			${datail.content}
 		</div>
-			<div class="col-sm-12 mb-3 mb-sm-0">
-		        <a href="modify?bno=${datail.bno}">수정</a>
-		        <a href="remove?bno=${datail.bno}">삭제</a>
-		    </div>
-    </div>
+		<div class="col-sm-12 mb-3 mb-sm-0">
+	        <a href="modify?bno=${datail.bno}">수정</a>
+	        <a href="remove?bno=${datail.bno}">삭제</a>
+	    </div>
+    	<!-- .panel-body -->
+       <div class="panel-body">
+	        <!-- Button trigger modal -->
+	        <button id="addReplyBtn"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	            	댓글달기
+	        </button>
+	        <!-- Modal -->
+	        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	            <div class="modal-dialog">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                        <h4 class="modal-title" id="myModalLabel">댓글</h4>
+	                    </div>
+	                    <div class="modal-body">
+	                    	<div>
+	                        	<label>Replyer</label>
+	                        	<input type="text">	                    	
+	                    	</div>
+	                    	<div>
+	                        	<label>Reply</label>
+	                        	<input type="text">	                    	
+	                    	</div>
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	                        <button type="button" class="btn btn-primary">댓글쓰기</button>
+	                        <button type="button" class="btn btn-primary">댓글수정</button>
+	                        <button type="button" class="btn btn-primary">댓글삭제</button>
+	                    </div>
+	                </div>
+	                <!-- /.modal-content -->
+	            </div>
+	            <!-- /.modal-dialog -->
+	        </div>
+	        <!-- /.modal -->
+   		</div>
+  	</div>
 </body>
 </html>
