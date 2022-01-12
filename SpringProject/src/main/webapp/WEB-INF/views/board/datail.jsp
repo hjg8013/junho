@@ -16,10 +16,14 @@
 <script src="../resources/js/bootstrap.js" type="text/javascript"></script>
 <script src="../resources/js/metisMenu.js" type="text/javascript"></script>
 <script src="../resources/js/sb-admin-2.js" type="text/javascript"></script>
-<!--<script src="../resources/js/detail.js" type="text/javascript"></script>  -->
+<script src="../resources/js/detail.js" type="text/javascript"></script> 
 </head>
 <body>
 	<div class="form-group row">
+		<!-- <input type="text" id="aaa" value="${datail.bno}"> -->
+		<div id="bno" class="col-sm-12 mb-3 mb-sm-0">
+			${datail.bno}
+		</div>
     	<div class="col-sm-12 mb-3 mb-sm-0">
         	${datail.title}
     	</div>
@@ -48,16 +52,16 @@
 	                    <div class="modal-body">
 	                    	<div>
 	                        	<label>Replyer</label>
-	                        	<input type="text">	                    	
+	                        	<input type="text" name="replyer">
 	                    	</div>
 	                    	<div>
 	                        	<label>Reply</label>
-	                        	<input type="text">	                    	
+	                        	<input type="text" name="reply">
 	                    	</div>
 	                    </div>
 	                    <div class="modal-footer">
 	                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-	                        <button type="button" class="btn btn-primary">댓글쓰기</button>
+	                        <button type="button" class="btn btn-primary" id="modalRegisterBtn">댓글쓰기</button>
 	                        <button type="button" class="btn btn-primary">댓글수정</button>
 	                        <button type="button" class="btn btn-primary">댓글삭제</button>
 	                    </div>
