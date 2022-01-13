@@ -19,7 +19,10 @@ $(document).ready(function(){
 		//댓글 삭제
 		$("#modalRemoveBtn").hide();
 		
-		$(".modal fade").modal("show");
+		$("input[name='replyer']").val("");
+		$("input[name='reply']").val("");
+		
+		//$(".modal").modal("show");
 		//alert("bb");
 	})
 	//모딜창을 띄워라
