@@ -7,4 +7,7 @@
   			insert into reply(bno,replyer,reply)
 			values(#{bno},#{replyer},#{reply});
   		</insert>
+  		<select id="list" resultType="org.jun.domain.ReplyDTO">
+  			select * from reply where bno=#{bno};
+  		</select>
   </mapper>

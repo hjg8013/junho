@@ -21,9 +21,8 @@
 <body>
 	<div class="form-group row">
 		<!-- <input type="text" id="aaa" value="${datail.bno}"> -->
-		<div id="bno" class="col-sm-12 mb-3 mb-sm-0">
-			${datail.bno}
-		</div>
+		<!-- bno의 값을 가져올때 공백이 있으면 띄워쓰기가 들어가져있다 -->
+		<div id="bno" class="col-sm-12 mb-3 mb-sm-0">${datail.bno}</div>
     	<div class="col-sm-12 mb-3 mb-sm-0">
         	${datail.title}
     	</div>
@@ -41,6 +40,11 @@
 	        <button id="addReplyBtn"class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 	            	댓글달기
 	        </button>
+	        
+	        <div id="relist">
+	        12345
+	        </div>
+	        
 	        <!-- Modal -->
 	        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	            <div class="modal-dialog">
@@ -72,6 +76,11 @@
 	        </div>
 	        <!-- /.modal -->
    		</div>
+   		<!-- /.panel-body -->
+   		
+   		
+   		
+   		
   	</div>
 </body>
 </html>
