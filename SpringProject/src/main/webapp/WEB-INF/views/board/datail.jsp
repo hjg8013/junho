@@ -41,8 +41,10 @@
 	            	댓글달기
 	        </button>
 	        
-	        <div id="relist">
-	        12345
+	        <div>
+	        	<ul id="relist">
+	        	
+	        	</ul>
 	        </div>
 	        
 	        <!-- Modal -->
@@ -66,8 +68,8 @@
 	                    <div class="modal-footer">
 	                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 	                        <button type="button" class="btn btn-primary" id="modalRegisterBtn">댓글쓰기</button>
-	                        <button type="button" class="btn btn-primary">댓글수정</button>
-	                        <button type="button" class="btn btn-primary">댓글삭제</button>
+	                        <button type="button" class="btn btn-primary" id="modalModBtn">댓글수정</button>
+	                        <button type="button" class="btn btn-primary" id="modalRemoveBtn">댓글삭제</button>
 	                    </div>
 	                </div>
 	                <!-- /.modal-content -->

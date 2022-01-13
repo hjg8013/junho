@@ -24,4 +24,8 @@ public class ReplyServiceImpl implements ReplyService {
 	public ArrayList<ReplyDTO> list(int bno) {
 		return rmapper.list(bno);
 	}
+	
+	public ReplyDTO detail(int rno) {
+		return rmapper.detail(rno);
+	}
 }

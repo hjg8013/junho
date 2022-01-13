@@ -13,6 +13,6 @@ public interface ReplyService {
 	//댓글 목록리스트 설계
 	public ArrayList<ReplyDTO> list(int bno);
 	
-	
+	public ReplyDTO detail(int rno);
 	
 }

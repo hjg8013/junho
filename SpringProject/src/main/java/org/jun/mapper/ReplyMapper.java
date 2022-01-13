@@ -12,4 +12,6 @@ public interface ReplyMapper {
 	public int write(ReplyDTO rdto);
 	//댓글 목록리스트를 설계
 	public ArrayList<ReplyDTO> list(int bno);
+	
+	public ReplyDTO detail(int rno);
 }

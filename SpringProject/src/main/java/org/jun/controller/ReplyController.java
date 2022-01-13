@@ -45,6 +45,15 @@ public class ReplyController {
 		
 		return new ResponseEntity<>(rservice.list(bno),HttpStatus.OK);
 	}
+	//댓글수정을 하기 위해 댓글내용 가져오기
+	@GetMapping(value="{rno}",produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyDTO> getDetail(@PathVariable int rno){
+		
+		System.out.println("Controllerrno = "+rno);
+		
+		return new ResponseEntity<>(rservice.detail(rno),HttpStatus.OK);
+	}
+
 	
 	
 	
