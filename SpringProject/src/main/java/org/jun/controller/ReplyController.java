@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,7 @@ public class ReplyController {
 	@GetMapping(value="list/{bno}",produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ArrayList<ReplyDTO>> getList(@PathVariable int bno){
 		//@PathVariable : REST방식에서 주로 사용. URL경로의 일부를 파라미터 사용하고자할 때  {bno} = int bno로 사용하고자 할때 쓴다
-		System.out.println("Controllerbno = "+bno);
+		System.out.println("getListbno = "+bno);
 		
 		return new ResponseEntity<>(rservice.list(bno),HttpStatus.OK);
 	}
@@ -49,12 +50,19 @@ public class ReplyController {
 	@GetMapping(value="{rno}",produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ReplyDTO> getDetail(@PathVariable int rno){
 		
-		System.out.println("Controllerrno = "+rno);
+		System.out.println("getDetailrno = "+rno);
 		
 		return new ResponseEntity<>(rservice.detail(rno),HttpStatus.OK);
 	}
-
-	
+	//@RequestBody 객체를 가져올때 사용한다  @PathVariable 변수를 가져올때 사용한다
+	@PutMapping(value="update",consumes="application/json",produces={MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> update(@RequestBody ReplyDTO rdto){
+		System.out.println("updaterdto = "+rdto);
+		
+		int result=rservice.update(rdto);
+		//		update 정상적으로 처리되었을때, update 배정상적으로 처리되었을 때
+		return result==1?new ResponseEntity<>("success",HttpStatus.OK):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	
 	
 	

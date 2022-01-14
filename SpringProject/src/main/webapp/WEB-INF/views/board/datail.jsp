@@ -57,6 +57,10 @@
 	                    </div>
 	                    <div class="modal-body">
 	                    	<div>
+	                        	<label>Rno</label>
+	                        	<input type="text" name="rno">
+	                    	</div>
+	                    	<div>
 	                        	<label>Replyer</label>
 	                        	<input type="text" name="replyer">
 	                    	</div>

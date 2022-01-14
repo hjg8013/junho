@@ -52,7 +52,7 @@ $(document).ready(function(){
 			var str="";
 			
 			for(var i=0;i<list.length;i++){
-				str+= "<li><div>"+list[i].bno+"</div>"	
+				str+= "<li data-rno='"+list[i].rno+"'><div>"+list[i].bno+"</div>"	
 				str+= "<div><b>"+list[i].replyer+"</b></div>"
 				str+= "<div>"+list[i].reply+"</div>"	
 			}
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		//              ajax보내고자하는 json타입                                ,callback함수호출
 		replyService.add({reply:reply,replyer:replyer,bno:bno},
 						function(result){
-							alert("insert 작업 : "+result)
+							//alert("insert 작업 : "+result)
 							//목록리스트를 처리
 							showList();
 						});
@@ -78,22 +78,33 @@ $(document).ready(function(){
 	})
 	
 	//댓글내용을 클릭하면
-	$("#relist").on("click",function(){
+	//$("#relist").on("click",function(){
+	$("#relist").on("click","li",function(){
 		
+		//$("#relist").on("click","li",function(){
+		//li를 추가해서 범위를 한정시켜주는것이다
+		//rno값을 가져오기
+		var rno= $(this).data("rno");
 		
-		replyService.reDetail(4,function(detail){
+		//alert($("li").data("rno"));
+		//현재는 1만 계속나온다
+		alert($(this).data("rno"));
+		//내가 클릭한 li의 data를 가져온다
+		
+		replyService.reDetail(rno,function(detail){
 			
 			//내용확인
 			console.log(detail.replyer);
 			console.log(detail.reply);
 			
 			//input태그안에 내용을 넣어준다
+			$("input[name='rno']").val(detail.rno);
 			$("input[name='replyer']").val(detail.replyer);
 			$("input[name='reply']").val(detail.reply);
 		});
 		
 		
-		alert("aaa");
+		//alert("aaa");
 		//댓글쓰기
 		$("#modalRegisterBtn").hide();
 		//댓글 수정
@@ -102,14 +113,27 @@ $(document).ready(function(){
 		$("#modalRemoveBtn").show();
 		//model을 띄워라
 		$(".modal").modal("show");
+
+	})
+	//댓글수정버튼을 클릭하면
+	$("#modalModBtn").on("click",function(){
 		
-		
-		
-		
+		//alert("modalModBtn");
+		var reply={rno:$("input[name='rno']").val(),reply:$("input[name='reply']").val()}
+		console.log(reply);
+		//댓글수정함수를 호출해서 처리
+		replyService.reupdate(reply,function(update){
+			// 콜백영역update가 정상적으로 처리된 후 조치
+			//alert("update 작업 : "+update)
+			//모달창을 숨겨ㅏ
+			$(".modal").modal("hide");
+			//댓글 목록리스트 다시보여주기
+			showList();
+			
+		})
 		
 	})
-	
-	
+
 	
 })
 
@@ -161,6 +185,28 @@ var replyService=(function(){
 	
 	
 	//댓글수정을 하기 위한 함수 선언
+	function reupdate(reply,callback){
+		$.ajax({
+			url:"/controller/replies/update",
+			type:"put",
+			data:JSON.stringify(reply),
+	        contentType:"application/json; charset=utf-8",
+	        success:function(result){
+	            //callback함수선언
+	         	if(callback)
+	         		//만약 콜백함수가 있으면
+	         		callback(result);
+	         	
+	         },   // 통신이 정상적으로 성공했으면
+	         error:function(){
+	            
+	         }      // 통신이 비정상적으로 처리가 되어 error가 있으면
+		})
+	}
+	
+	
+	
+	
 	
 	
 	//댓글삭제를 하기 위한 함수 선언
@@ -173,6 +219,7 @@ var replyService=(function(){
 	return {
 		add:add,
 		getList:getList,
-		reDetail:reDetail
+		reDetail:reDetail,
+		reupdate:reupdate
 			};
 })()
