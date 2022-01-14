@@ -133,7 +133,24 @@ $(document).ready(function(){
 		})
 		
 	})
-
+	//댓글삭제버튼을 클릭하면
+		$("#modalRemoveBtn").on("click",function(){
+		
+		alert("modalRemoveBtn");
+		var rno = {rno:$("input[name='rno']").val()};
+		console.log(rno);
+		//댓글삭제함수를 호출해서 처리
+		replyService.remove(rno,function(remove){
+			// 콜백영역delete가 정상적으로 처리된 후 조치
+			alert("delete 작업 : "+remove)
+			//모달창을 숨겨ㅏ
+			$(".modal").modal("hide");
+			//댓글 목록리스트 다시보여주기
+			showList();
+			
+		})
+		
+	})
 	
 })
 
@@ -210,7 +227,24 @@ var replyService=(function(){
 	
 	
 	//댓글삭제를 하기 위한 함수 선언
-	
+	function remove(reply,callback){
+		$.ajax({
+			url:"/controller/replies/remove",
+			type:"delete",
+			data:JSON.stringify(reply),
+	        contentType:"application/json; charset=utf-8",
+	        success:function(result){
+	            //callback함수선언
+	         	if(callback)
+	         		//만약 콜백함수가 있으면
+	         		callback(result);
+	         	
+	         },   // 통신이 정상적으로 성공했으면
+	         error:function(){
+	            
+	         }      // 통신이 비정상적으로 처리가 되어 error가 있으면
+		})
+	}
 	
 	
 	
@@ -220,6 +254,7 @@ var replyService=(function(){
 		add:add,
 		getList:getList,
 		reDetail:reDetail,
-		reupdate:reupdate
+		reupdate:reupdate,
+		remove:remove
 			};
 })()

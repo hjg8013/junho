@@ -32,4 +32,8 @@ public class ReplyServiceImpl implements ReplyService {
 	public int update(ReplyDTO rdto) {
 		return rmapper.update(rdto);
 	}
+	//댓글 삭제 구현
+	public int remove(ReplyDTO rdto) {
+		return rmapper.remove(rdto);
+	}
 }

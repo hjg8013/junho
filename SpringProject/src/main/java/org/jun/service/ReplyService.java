@@ -16,4 +16,6 @@ public interface ReplyService {
 	public ReplyDTO detail(int rno);
 	//댓글 수정 설계
 	public int update(ReplyDTO rdto);
+	//댓글 삭제 설계
+	public int remove(ReplyDTO rdto);
 }

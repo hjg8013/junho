@@ -20,5 +20,7 @@
   					replyDate=now()
   				where rno=#{rno};
   		</update>
-
+		<delete id="remove">
+			delete from reply where rno=#{rno};
+		</delete>
   </mapper>
