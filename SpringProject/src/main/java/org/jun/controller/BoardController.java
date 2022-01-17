@@ -38,6 +38,7 @@ public class BoardController {
 	@GetMapping("tables")
 	public void tables(Criteria cri,Model model) {
 		System.out.println("tables"+service.tables(cri));
+		//컨트롤에서 뷰로 넘겨주는역할이 addAttribute이다
 		model.addAttribute("tables",service.tables(cri));
 		//이런식으로 바로 위에 등록하지 않고 바로사용할수있다 나중에 60도 받아와서 작업을 할수있게 만들거다
 		int total=service.getTotalCount(cri);
