@@ -21,6 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<beans:bean id="multpartResover" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+   	</beans:bean>
+	
 	<context:component-scan base-package="org.jun.controller" />
 	
 </beans:beans>
