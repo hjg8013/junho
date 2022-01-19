@@ -2,15 +2,15 @@ package org.jun.domain;
 
 public class AttachFileDTO {
 
-	private String filename;
+	private String fileName;
 	private String uploadPath;
 	private String uuid;
 	private boolean image;
-	public String getFilename() {
-		return filename;
+	public String getFileName() {
+		return fileName;
 	}
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setFileName(String filename) {
+		this.fileName = filename;
 	}
 	public String getUploadPath() {
 		return uploadPath;
@@ -32,7 +32,7 @@ public class AttachFileDTO {
 	}
 	@Override
 	public String toString() {
-		return "AttachFileDTO [filename=" + filename + ", uploadPath=" + uploadPath + ", uuid=" + uuid + ", image="
+		return "AttachFileDTO [fileName=" + fileName + ", uploadPath=" + uploadPath + ", uuid=" + uuid + ", image="
 				+ image + "]";
 	}
 	

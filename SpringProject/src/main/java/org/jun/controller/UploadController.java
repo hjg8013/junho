@@ -12,10 +12,14 @@ import java.util.Date;
 import java.util.UUID;
 
 import org.jun.domain.AttachFileDTO;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import net.coobird.thumbnailator.Thumbnailator;
@@ -110,10 +114,9 @@ public class UploadController {
 			
 			String uploadFileName=multiparFile.getOriginalFilename();
 			
-			attachdto.setUploadPath(uploadFolder);
 			
 			//실제 파일명 uploadFileName을 AttachFileDTO클래스(attachdto)에 fileName에 저장(setFileName)
-			attachdto.setFilename(uploadFileName);
+			attachdto.setFileName(uploadFileName);
 			
 			
 			//중복이 되지않는 임의의 문자열을 생성
@@ -184,5 +187,48 @@ public class UploadController {
 		}
 		return false;
 	}
+	//파일 업로드한 파일타입이 이미지일때 웹브라우저에 이미지를 띄우기 위해서
+	@GetMapping("display")
+	public ResponseEntity<byte[]> getFile(String fileName) {  //getFile을 문자열로 파일의 경로가 포함된 fileName을 매개변수로 받고 byte[]를 전송
+		System.out.println("url주소를 통한 fileName= "+fileName);
+		
+		File file = new File("C:\\Users\\GreenArt\\git\\upload\\"+fileName);
+		System.out.println("file= "+file);
+		
+		ResponseEntity<byte[]> result = null;
+		
+		//byte로 이미지 파일의 데이터를 전송할 때 브라우저에 보내는 mjme타입이 파일의 종류에 따라 달아줍니다
+		//이 부붐에 해결하기 위해서 probeContentType()를 이용해서 적절한 mine 작업 페이지를 http의 헤더 메세지에 호풀할 수 있도록 처리
+		try {
+			HttpHeaders header = new HttpHeaders();
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),header,HttpStatus.OK);			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	//파일업로드한 파일타입이 이미지 아닐시 xls,ppt,txt 웹브라우저 통해서 download형 수 있도록
 	
+	@GetMapping(value="download",produces={MediaType.APPLICATION_OCTET_STREAM_VALUE})
+	public ResponseEntity<Resource> downloadFile(String fileName){
+		
+		Resource resource = new FileSystemResource("C:\\Users\\GreenArt\\git\\upload\\"+fileName);
+		
+		System.out.println("download resource= "+resource);
+		
+		String resourceName = resource.getFilename();
+		
+		HttpHeaders header = new HttpHeaders();
+		try {
+			header.add("Content-Disposition", "attachment; fileName="+new String(resourceName.getBytes("UTF-8"),"ISO-8859-1"));			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return new ResponseEntity<Resource>(resource,header,HttpStatus.OK);
+	}
 }

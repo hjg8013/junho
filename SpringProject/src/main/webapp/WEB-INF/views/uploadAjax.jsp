@@ -13,6 +13,9 @@
       <input type="file" name="uploadFile" multiple> 
       <!-- multiple을 추가하면 여러파일을 선택가능하다 name의 이름과 controller의 변수이름이 같아야한다 -->
 </div>
+<div id="uploadResult">
+	<ul></ul>
+</div>
 <input type="submit" value="전송">
 
 </body>

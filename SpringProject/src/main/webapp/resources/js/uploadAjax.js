@@ -56,11 +56,23 @@ $(document).ready(function(){
 			success:function(result){
 				//이게 실행될려면 ReplyController에 HttpSt ok가 실행될때 실행된다
 				console.log(result);
+				//console.log(result[0].fileName); 이런식으로 하나씩 선택을해서 사용한다
+				
+				
+				//사용자가 선택한 파일을 원하는 경로에 성공적으로 업로드 한후
+				
+				
+				
+				showUploadFile(result);
+				
+				
+				
 				
 			},   // 통신이 정상적으로 성공했으면
 	        error:function(){
 	            
 	        } 
+			
 			
 		})
 	})
@@ -68,3 +80,25 @@ $(document).ready(function(){
 	
 	
 })//ready end
+
+//사용자가 선택한 파일을 원하는 경로에 성공적으로 업로드 한 후 웹브라우저에 파일을 띄워라에 대한 함수 선언
+function showUploadFile(uploadresultArr){
+	var str="";
+	$(uploadresultArr).each(function(i,obj){
+		console.log(obj);
+		if(!obj.image){ //사용자가 업로드 한 파일의 타입이 이미지가 아니면 excel문서파일 
+			str+="<li>"+"이미지 파일아님"+"</li>"
+			var fileCallPath=encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
+			console.log(fileCallPath);
+			str+="<li><a href='/controller/download?fileName="+fileCallPath+"'></a></li>"
+		}else{ //사용자 업로드 한 파일으 타입이 이미지이면 img,png,gif
+			str+="<li>"+"이미지 파일임"+"</li>"
+			var fileCallPath=encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);
+			console.log(fileCallPath);
+			str+="<li><img src='/controller/display?fileName="+fileCallPath+"'></li>"
+		}	
+	})
+	$("#uploadResult ul").html(str);
+}
+
+
