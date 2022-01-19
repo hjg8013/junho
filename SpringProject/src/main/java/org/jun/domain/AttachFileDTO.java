@@ -6,13 +6,23 @@ public class AttachFileDTO {
 	private String uploadPath;
 	private String uuid;
 	private boolean image;
+	private int bno;
+	
+	
+	
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 	public String getFileName() {
 		return fileName;
 	}
 	public void setFileName(String filename) {
 		this.fileName = filename;
 	}
-	public String getUploadPath() {
+	public String getUploadPath() {  
 		return uploadPath;
 	}
 	public void setUploadPath(String uploadPath) {
