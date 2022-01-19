@@ -90,7 +90,7 @@ function showUploadFile(uploadresultArr){
 			str+="<li>"+"이미지 파일아님"+"</li>"
 			var fileCallPath=encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
 			console.log(fileCallPath);
-			str+="<li><a href='/controller/download?fileName="+fileCallPath+"'></a></li>"
+			str+="<li><a href='/controller/download?fileName="+fileCallPath+"'>"+obj.fileName+"</a></li>"
 		}else{ //사용자 업로드 한 파일으 타입이 이미지이면 img,png,gif
 			str+="<li>"+"이미지 파일임"+"</li>"
 			var fileCallPath=encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);

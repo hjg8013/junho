@@ -40,13 +40,13 @@ public class UploadController {
 	@PostMapping("uploadAction")
 	public void uploadAction(MultipartFile[] uploadFile) {
 		//MultipartFile를 사용하면 DTO가 필요없다
-		System.out.println("MultipartFile = "+uploadFile[0]);
-		System.out.println("getOriginalFilename = "+uploadFile[0].getOriginalFilename()); //파일의 이름 컴활2급.jpg
-		System.out.println("getSize = "+uploadFile[0].getSize());				//파일사이즈 197051
-		System.out.println("getContentType = "+uploadFile[0].getContentType());		//파일의타입 image/jpeg
-		System.out.println("getOriginalFilename = "+uploadFile[1].getOriginalFilename()); //파일의 이름 컴활2급.jpg
-		System.out.println("getSize = "+uploadFile[1].getSize());				//파일사이즈 197051
-		System.out.println("getContentType = "+uploadFile[1].getContentType());		//파일의타입 image/jpeg
+//		System.out.println("MultipartFile = "+uploadFile[0]);
+//		System.out.println("getOriginalFilename = "+uploadFile[0].getOriginalFilename()); //파일의 이름 컴활2급.jpg
+//		System.out.println("getSize = "+uploadFile[0].getSize());				//파일사이즈 197051
+//		System.out.println("getContentType = "+uploadFile[0].getContentType());		//파일의타입 image/jpeg
+//		System.out.println("getOriginalFilename = "+uploadFile[1].getOriginalFilename()); //파일의 이름 컴활2급.jpg
+//		System.out.println("getSize = "+uploadFile[1].getSize());				//파일사이즈 197051
+//		System.out.println("getContentType = "+uploadFile[1].getContentType());		//파일의타입 image/jpeg
 		
 		String uploadFolder="C:\\Users\\GreenArt\\git\\upload"; //파일 업로드하고자 하는 위치
 		
@@ -74,13 +74,13 @@ public class UploadController {
 		
 		
 		//MultipartFile를 사용하면 DTO가 필요없다
-		System.out.println("MultipartFile = "+uploadFile[0]);
-		System.out.println("getOriginalFilename = "+uploadFile[0].getOriginalFilename()); //파일의 이름 컴활2급.jpg
-		System.out.println("getSize = "+uploadFile[0].getSize());				//파일사이즈 197051
-		System.out.println("getContentType = "+uploadFile[0].getContentType());		//파일의타입 image/jpeg
-		System.out.println("getOriginalFilename = "+uploadFile[1].getOriginalFilename()); //파일의 이름 컴활2급.jpg
-		System.out.println("getSize = "+uploadFile[1].getSize());				//파일사이즈 197051
-		System.out.println("getContentType = "+uploadFile[1].getContentType());		//파일의타입 image/jpeg
+//		System.out.println("MultipartFile = "+uploadFile[0]);
+//		System.out.println("getOriginalFilename = "+uploadFile[0].getOriginalFilename()); //파일의 이름 컴활2급.jpg
+//		System.out.println("getSize = "+uploadFile[0].getSize());				//파일사이즈 197051
+//		System.out.println("getContentType = "+uploadFile[0].getContentType());		//파일의타입 image/jpeg
+//		System.out.println("getOriginalFilename = "+uploadFile[1].getOriginalFilename()); //파일의 이름 컴활2급.jpg
+//		System.out.println("getSize = "+uploadFile[1].getSize());				//파일사이즈 197051
+//		System.out.println("getContentType = "+uploadFile[1].getContentType());		//파일의타입 image/jpeg
 		
 		String uploadFolder="C:\\Users\\GreenArt\\git\\upload"; //파일 업로드하고자 하는 위치
 		
