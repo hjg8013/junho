@@ -1,13 +1,20 @@
 package org.jun.controller;
 
+import java.util.ArrayList;
+
+import org.jun.domain.AttachFileDTO;
 import org.jun.domain.BoardDTO;
 import org.jun.domain.Criteria;
 import org.jun.domain.PageDTO;
 import org.jun.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -53,6 +60,15 @@ public class BoardController {
 		
 		model.addAttribute("datail",service.datail(board));
 	}
+	
+	//게시판 상세페이지에서 이미지를 출력하기 위한 select됨 결과를 javaseript로...
+	@GetMapping(value="fileList/{bno}",produces={MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ArrayList<AttachFileDTO>> fileList(@PathVariable int bno){
+		System.out.println("fileList");
+		return new ResponseEntity<>(service.fileList(bno),HttpStatus.OK);
+	}
+	
+	
 	//글수정 화면으로
 	@GetMapping("modify")
 	public void modify(BoardDTO board,Model model) {

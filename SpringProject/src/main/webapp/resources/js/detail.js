@@ -59,6 +59,31 @@ $(document).ready(function(){
 			$("#relist").html(str);
 		});
 	}
+	
+	var bno=$("#bno").html();
+
+	//상세페이지가 시작되자마자 이미지를 출력하기 위한 ajax
+	$.getJSON("/controller/board/fileList/"+bno+".json",
+		function(data){ //BoardController에 있는 fileList를 통해 얻어진 select결과를  data에 저장한후,
+				//datail.jsp에 뿌리기
+			console.log(data);
+			var str="";
+				$(data).each(function(i,obj){
+					if(!obj.image){ //사용자가 업로드 한 파일의 타입이 이미지가 아니면 excel문서파일 
+						//str+="<li>"+"이미지 파일아님"+"</li>"
+						var fileCallPath=encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
+						console.log(fileCallPath);
+						str+="<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'><a href='/controller/download?fileName="+fileCallPath+"'>"+obj.fileName+"</a></li>"
+					}else{ //사용자 업로드 한 파일으 타입이 이미지이면 img,png,gif
+						//str+="<li>"+"이미지 파일임"+"</li>"
+						var fileCallPath=encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);
+						console.log(fileCallPath);
+						str+="<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'><img src='/controller/display?fileName="+fileCallPath+"'></li>"
+					}
+			})
+			$("#uploadResult ul").html(str);
+
+		})
 	//댓글쓰기 버튼을 클릭하면
 	$("#modalRegisterBtn").on("click",function(){
 		

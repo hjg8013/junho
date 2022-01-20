@@ -100,12 +100,13 @@ $(document).ready(function(){
 			 * <span data-age="13">
 			 * $("span").data("age") => 13 data함수 괄호 안에 매개변수가 하마면 getter
 			 * */
-			str+="<input type='text' name='attachList["+i+"].fileName' value='"+$(obj).data("filename")+"'>"
-			str+="<input type='text' name='attachList["+i+"].uuid' value='"+$(obj).data("uuid")+"'>"
-			str+="<input type='text' name='attachList["+i+"].uploadPath' value='"+$(obj).data("path")+"'>"
-			str+="<input type='text' name='attachList["+i+"].image' value='"+$(obj).data("type")+"'>"
+			str+="<input type='hidder' name='attachList["+i+"].fileName' value='"+$(obj).data("filename")+"'>"
+			str+="<input type='hidder' name='attachList["+i+"].uuid' value='"+$(obj).data("uuid")+"'>"
+			str+="<input type='hidder' name='attachList["+i+"].uploadPath' value='"+$(obj).data("path")+"'>"
+			str+="<input type='hidder' name='attachList["+i+"].image' value='"+$(obj).data("type")+"'>"
 		})
-		formObj.append(str);
+		formObj.append(str).submit();
+		//기존에 없었다가 그밑에 추가가 되었다 그리고 컨트롤러에 여기에있는 데이터를 넘겨줘야한다
 	})
 
 
@@ -115,7 +116,7 @@ $(document).ready(function(){
 	
 	//파일 선택의 내용이 변경되면
 	$("input[type='file']").on("change",function(e){
-		alert("ㅁㅁㅁㅁㅁ");
+		//alert("ㅁㅁㅁㅁㅁ");
 		
 		var formData = new FormData();
 		var inputFile=$("input[name='uploadFile']");

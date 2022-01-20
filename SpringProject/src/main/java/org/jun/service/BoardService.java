@@ -2,6 +2,7 @@ package org.jun.service;
 
 import java.util.ArrayList;
 
+import org.jun.domain.AttachFileDTO;
 import org.jun.domain.BoardDTO;
 import org.jun.domain.Criteria;
 
@@ -18,4 +19,6 @@ public interface BoardService {
 	public void remove(BoardDTO board);
 	//게시판 페이징의 데이터 건수
 	public int getTotalCount(Criteria cri);
+	//게시판 상세 페이지에 파일 업로드된 이미지 출력
+	public ArrayList<AttachFileDTO> fileList(int bno);
 }

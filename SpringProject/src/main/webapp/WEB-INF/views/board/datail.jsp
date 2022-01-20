@@ -34,6 +34,9 @@
 	        <a href="modify?bno=${datail.bno}">수정</a>
 	        <a href="remove?bno=${datail.bno}">삭제</a>
 	    </div>
+	    <div id="uploadResult" class="col-sm-12 mb-3 mb-sm-0">
+			<ul></ul>
+		</div>
     	<!-- .panel-body -->
        <div class="panel-body">
 	        <!-- Button trigger modal -->
