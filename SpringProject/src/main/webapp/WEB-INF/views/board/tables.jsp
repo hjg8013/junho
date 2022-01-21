@@ -18,6 +18,10 @@
 </head>
 <body>
 <h1>게시판 목록 리스트</h1>
+	<!-- ${login}이런식으로 세션에있는 정보를 가져와서 사용할수 있다 -->
+	<c:if test="${login!=null}">
+		<div class="form-control bg-Light border-0 small"><a href="/controller/board/write">글쓰기</a></div>
+	</c:if>
 	<div class="card-body">
 	    <div class="table-responsive">
 	        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
