@@ -39,7 +39,7 @@ public class MemberController {
 		System.out.println("Postlogin="+mservice.login(mdto));
 		
 		MemberDTO login= mservice.login(mdto);
-		//MebmerDTO에 있는 MemberDTO 에있는 세션영영ㄱ에 login이라는 변수를 저장
+		//MebmerDTO에 있는 MemberDTO 에있는 세션영역에 login이라는 변수를 저장
 		//세션(session)객채에 login변수에, login값을 저장 (setAttribute)
 		session.setAttribute("login", login); //로그아웃이나 웹브라우저를 닫지않는이상 데이터가 사라지지 않는다
 		
