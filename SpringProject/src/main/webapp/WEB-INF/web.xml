@@ -24,7 +24,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+	<!-- 경로 오류 데이터베이스에 이미지경로가 들어가있는데 이미지가 없어서 오류가뜬다 -->
 		<multipart-config>
          <location>C:\Users\GreenArt\git\upload</location>    <!-- 업로드되는 파일을 저장하는 공간 (파일을 저장할때 제일 우선되는 저장공간)-->
          <max-file-size>20971520</max-file-size>                         <!-- 업로드되는 파일의 최대 크기 1024*1024*20 20MB -->
